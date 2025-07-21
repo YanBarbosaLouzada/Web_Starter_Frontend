@@ -6,9 +6,9 @@ import { generateRandomId } from '../Helpers/generateRandomId';
 const NoteContext = createContext();
 
 const NoteProvider = ({ children }) => {
- const [notes, setNotes] = useState([...mockNotes]);
+  const [notes, setNotes] = useState([...mockNotes]);
   //criando variaveis para função editar
-  const [note, setNote] = useState({title:"",description:""});
+  const [note, setNote] = useState({ title: "", description: "" });
   const [isEditing, setEditing] = useState(false);
   const [idEdit, setIdEdit] = useState("")
 
@@ -24,12 +24,12 @@ const NoteProvider = ({ children }) => {
   };
 
   // criando função edit
-  const editnote = (id) =>{
+  const editnote = (id) => {
     setNotes(
-      notes.map((n)=>{
-        if(n.id === id){
-          return {...note, id: id, data: generateAtualDate()}
-        }else{
+      notes.map((n) => {
+        if (n.id === id) {
+          return { ...note, id: id, data: generateAtualDate() }
+        } else {
           return n;
         }
       })
@@ -37,7 +37,7 @@ const NoteProvider = ({ children }) => {
   }
 
   return (
-      <NoteContext.Provider value={{ notes, addNote, deleteNote, note, setNote, isEditing, setEditing, idEdit, setIdEdit, editnote }}>{children}</NoteContext.Provider>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, note, setNote, isEditing, setEditing, idEdit, setIdEdit, editnote }}>{children}</NoteContext.Provider>
   )
 };
 
